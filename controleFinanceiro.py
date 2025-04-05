@@ -142,7 +142,7 @@ def alterar_registro():
                     dados[indice]['parcela_atual'] = 1
             else:    
                 dados[indice]['parcela_atual'] = int(input("Nova parcela atual: "))
-            print(f"Utilize (.) para separar as casas decimais.")            
+          
             dados[indice]['valor'] = float(input("Novo valor: "))
             dados[indice]['categoria'] = input("Nova categoria: ").upper().strip()
             dados[indice]['banco'] = input("Novo banco: ").upper().strip()
@@ -324,19 +324,28 @@ def calcular_valor_por_parcelamento():
 def relatorio_parcelas_pendentes():
     dados = carregar_dados()
     pendentes = [registro for registro in dados if int(registro['parcela_atual']) < int(registro['total_parcelas'])]
+    total_a_pagar_mes = sum(float(registro['valor']) for registro in pendentes)
+    total_a_pagar = 0
     
     if not pendentes:
         print("Nenhuma parcela pendente encontrada.")
         return
     
     for registro in pendentes:
+        parcelas_restantes = int(registro['total_parcelas']) - int(registro['parcela_atual'])
+
         print(f"\nData: {registro['data']}")
         print(f"Descrição: {registro['descricao']}")
         print(f"Parcela: {registro['parcela_atual']} de {registro['total_parcelas']}")
         print(f"Valor: R$ {float(registro['valor']):.2f}")
+        print(f"Valor total restantes: {float(registro['valor']) * parcelas_restantes}")
         print(f"Categoria: {registro['categoria']}")
         print(f"Banco: {registro['banco']}")
         print("-----------------------------------------------------")
+        total_a_pagar += float(registro['valor']) * parcelas_restantes
+    print(f"Valor total a pagar no mes: R$ {total_a_pagar_mes:.2f}")
+    print(f"Valor total de parcelas pendentes: R$ {total_a_pagar:.2f}")
+    print("-----------------------------------------------------")
 
 # Função para filtrar registros por intervalo de datas
 def filtrar_por_intervalo_de_data():
