@@ -119,8 +119,7 @@ def alterar_registro():
     if not dados:
         print("Nenhum registro encontrado.")
         return
-    #for i, registro in enumerate(dados):
-        #print(f"\nRegistro {i}: {registro['descricao']}")
+
     try:
         indice = int(input("Digite o índice do registro que deseja alterar: "))
     except ValueError:
