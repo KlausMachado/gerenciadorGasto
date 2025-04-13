@@ -44,7 +44,7 @@ def adicionar_registro():
         parcela_atual = 1
     else:    
         parcela_atual = int(input(f"Qual a parcela atual (1 a {total_parcelas}): "))
-    print(f"Utilize (.) para separar as casas decimais.")    
+    print("Utilize (.) para separar as casas decimais.")    
     valor = float(input("Valor: "))
     categoria = input("Categoria: ").upper().strip()
     banco = input("Banco: ").upper().strip()
