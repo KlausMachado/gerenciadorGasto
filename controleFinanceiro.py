@@ -322,7 +322,8 @@ def calcular_valor_por_parcelamento():
 
 def relatorio_parcelas_pendentes():
     dados = carregar_dados()
-    pendentes = [registro for registro in dados if int(registro['parcela_atual']) < int(registro['total_parcelas'])]
+    pendentes = [registro for registro in dados if int(registro['parcela_atual']) <= int(registro['total_parcelas'])]
+
     total_a_pagar_mes = sum(float(registro['valor']) for registro in pendentes)
     total_a_pagar = 0
     

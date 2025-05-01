@@ -1,6 +1,8 @@
 from controleFinanceiro import listar_registros, adicionar_registro, alterar_registro, deletar_registro, filtrar_por_categoria, filtrar_por_banco, calcular_valor_total, calcular_valor_por_categoria, calcular_valor_por_banco, calcular_valor_por_parcelamento, relatorio_parcelas_pendentes, filtrar_por_intervalo_de_data, ordenar_registros
 # Menu principal
 def menu():
+    print("Controle Financeiro - Versão 1.0")
+
     while True:
         print("\n--- MENU ---")
         print("1. Listar todos os registros")
